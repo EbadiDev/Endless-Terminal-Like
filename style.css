@@ -125,12 +125,17 @@ body {
   color: var(--color-additional);
 }
 
+.output-symbol {
+  color: var(--color-highlight-additional);
+  display: inline;
+}
+
 .output-bookmarks {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   list-style: none;
-  row-gap: 16.2806666667px; /* LOL */
+  column-gap: 2.6666666667%; /* LOL */
+  row-gap: 16.2806666667px; /* LOL x2 */
 }
 
 .bookmarks-category {
