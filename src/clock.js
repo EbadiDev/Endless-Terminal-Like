@@ -1,18 +1,34 @@
-function clock() {
-  var date = new Date();
+(function clock() {
+  const windowClock = document.getElementById("window-clock");
 
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
+  const date = new Date();
 
-  hours = ("0" + hours).slice(-2);
-  minutes = ("0" + minutes).slice(-2);
-  seconds = ("0" + seconds).slice(-2);
+  const weekDay = date.toLocaleString("en-US", { weekday: "long" });
 
-  document.getElementById("window-clock").innerHTML =
-    hours + ":" + minutes + ":" + seconds;
+  const fullDate = date
+    .toLocaleString("en-US", {
+      day: "2-digit",
+      month: "long",
+      year: "2-digit",
+    })
+    .replace(",", "") // Remove "," from "(month) (day), (year)"
+    .split(" "); // Split to array [month, day, year]
 
-  var t = setTimeout(clock, 500);
-}
+  const time = date
+    .toLocaleString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    })
+    .split(" ") // Parse "(hours):(minutes):(seconds) AM(PM)" to array [(hours):(minutes):(seconds), AM(PM)]
+    .shift() // Remove AM(PM) and took only time
+    .split(":"); // Split to array [hours, minutes, seconds]
 
-clock();
+  windowClock.innerHTML = `
+    <span id="week-day">${weekDay}</span>
+    <span id="month-day">${fullDate[1]} </span>${fullDate[0]} ${fullDate[2]}
+    <span id="hours">${time[0]}</span>:${time[1]}:${time[2]}
+  `;
+
+  setTimeout(clock, 500);
+})();

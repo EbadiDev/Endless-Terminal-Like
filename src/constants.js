@@ -30,6 +30,42 @@ const lsKeys = {
 };
 
 const helpText = {
-  CREATE_LINK: "usage: cl [category] [name] [url]",
-  BOOKMARKS: "usage: bm | bm [category]",
+  CREATE_LINK: {
+    usage: "cl [category] [name] [url]",
+  },
+
+  BOOKMARKS: {
+    usage: "bm | bm [category]",
+  },
+
+  CLEAR: {
+    usage: "cc",
+  },
+
+  SET_QUOTE: {
+    usage: 'sq [word] | "[words]"',
+  },
+
+  HELP: {
+    usage: "h",
+    flags: "-cl (command list)",
+  },
 };
+
+const helpGeneral = `<pre>
+All commands go like:
+  * first letter = fs *
+  > fs of first word + fs of second word
+  > if there is only one word => only one letter
+
+Examples:
+
+  > [c]reate [l]ink:
+    cl - usage: ${helpText.CREATE_LINK.usage}
+
+  > [h]elp:
+    h - usage: ${helpText.HELP.usage}
+
+Enter [ h -cl ] for command list
+</pre>
+`;

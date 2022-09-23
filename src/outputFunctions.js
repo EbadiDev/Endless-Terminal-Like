@@ -5,7 +5,7 @@ function outputText(output = "") {
 
   outputNode.classList.add("terminal-output");
   outputText.classList.add("output-text");
-  outputText.textContent = output;
+  outputText.innerHTML = output;
 
   outputNode.appendChild(outputText);
   terminal.appendChild(outputNode);
@@ -29,7 +29,7 @@ function outputBookmarks(bookmarksToOutput) {
       listItemTitle.classList.add("category-title");
       listItemLinks.classList.add("category-links");
 
-      listItemTitle.textContent = `[${category}]`;
+      listItemTitle.textContent = `${category}`;
       listItemLinks.innerHTML = links
         .map(({ name, url }) => {
           return `

@@ -8,10 +8,16 @@ function output(command, outputFunction) {
 function parseFullCommand(fullCommand) {
   fullCommand = fullCommand.split(" ");
   const command = fullCommand.shift();
-  const flags = fullCommand.filter(
-    (item) => item.length > 1 && item[0] === "-"
-  );
-  const attributes = fullCommand.filter((item) => !flags.includes(item));
+  const flags = fullCommand.filter((item) => item.length > 1 && item[0] === "-");
+  const attributes = [];
+
+  const regularExp = /"([^"]+)"|([^\s]+)/g;
+  let input = fullCommand.filter((item) => !flags.includes(item)).join(" ");
+
+  while ((temp = regularExp.exec(input)) !== null) {
+    const val = temp[1] || temp[2]; // Get the correct capture group
+    attributes.push(val);
+  }
 
   return {
     command: command,
@@ -95,5 +101,5 @@ function setQuote(newQuote = quote) {
   lsWriteQuote();
 
   const windowQuote = document.getElementById("window-quote");
-  windowQuote.textContent = `"${quote}"`;
+  windowQuote.innerHTML = `"<span id="quote-text">${quote}</span>"`;
 }

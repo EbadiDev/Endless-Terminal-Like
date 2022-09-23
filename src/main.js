@@ -9,6 +9,21 @@ const COMMANDS = {
     func: output(bm, outputBookmarks),
     help: helpText.BOOKMARKS,
   },
+
+  cc: {
+    func: output(cc, outputText),
+    help: helpText.CLEAR,
+  },
+
+  sq: {
+    func: output(sq, outputText),
+    help: helpText.SET_QUOTE,
+  },
+
+  h: {
+    func: output(h, outputText),
+    help: helpText.HELP,
+  },
 };
 
 // IIFE for setup
@@ -27,7 +42,7 @@ const COMMANDS = {
   setQuote();
 
   // Create initial prompt
-  outputBookmarks(bookmarks);
+  outputText("Welcome to terminal, human! ^_^");
   writePrompt();
   focusPrompt();
 
@@ -50,5 +65,9 @@ function runCommand(input) {
     COMMANDS[fullCommand.command].func(fullCommand);
   }
 
-  replacePrompt();
+  if (fullCommand.command !== "cc") {
+    replacePrompt();
+  }
+
+  focusPrompt();
 }
