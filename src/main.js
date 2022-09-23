@@ -2,27 +2,54 @@
 const COMMANDS = {
   cl: {
     func: output(cl, outputText),
-    help: helpText.CREATE_LINK,
+    help: helpText.CREATE_LINK.usage,
+  },
+
+  ol: {
+    func: output(ol, outputText),
+    help: helpText.OPEN_LINK.usage,
+  },
+
+  rl: {
+    func: output(rl, outputText),
+    help: helpText.REMOVE_LINK.usage,
+  },
+
+  rc: {
+    func: output(rc, outputText),
+    help: helpText.REMOVE_CATEGORY.usage,
   },
 
   bm: {
     func: output(bm, outputBookmarks),
-    help: helpText.BOOKMARKS,
+    help: helpText.BOOKMARKS.usage,
   },
 
   cc: {
     func: output(cc, outputText),
-    help: helpText.CLEAR,
+    help: helpText.CLEAR.usage,
   },
 
   sq: {
     func: output(sq, outputText),
-    help: helpText.SET_QUOTE,
+    help: helpText.SET_QUOTE.usage,
+  },
+
+  ec: {
+    func: output(ec, outputText),
+    help: helpText.EDIT_CATEGORY.usage,
+  },
+
+  el: {
+    func: output(el, outputText),
+    help: helpText.EDIT_LINK.usage,
+    flags: ["-n", "-u"],
   },
 
   h: {
     func: output(h, outputText),
-    help: helpText.HELP,
+    help: helpText.HELP.usage,
+    flags: ["-cl"],
   },
 };
 
