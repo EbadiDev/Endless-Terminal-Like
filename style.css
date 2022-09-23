@@ -3,7 +3,10 @@
   --color-primary: #181825;
   --color-secondary: #1e1e2e;
   --color-additional: #c8d6f4;
-  --color-highlight: #cb99c3;
+  --color-highlight-primary: #cb99c3;
+  --color-highlight-secondary: #5bace6;
+  --color-highlight-additional: #cb6790;
+
   --color-error: #ff625e;
   --color-warning: #fbc02d;
   --color-success: #88e3a1;
@@ -30,20 +33,21 @@ body {
   background-image: url("./assets/backgrounds/village.png");
   background-repeat: no-repeat;
   background-size: cover;
+  line-height: 140%;
 }
 
 /* WINDOW */
 #window {
   background-color: var(--color-primary);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-  border: var(--color-highlight) 7px ridge;
+  border: var(--color-highlight-primary) 7px ridge;
   display: flex;
   flex-direction: column;
 }
 
 #window-title {
-  padding: 1em;
-  border-bottom: var(--color-highlight) 7px ridge;
+  padding: 10px;
+  border-bottom: var(--color-highlight-primary) 7px ridge;
   display: flex;
   justify-content: space-between;
   background-color: var(--color-secondary);
@@ -53,12 +57,28 @@ body {
   color: var(--color-additional);
 }
 
+#week-day {
+  color: var(--color-highlight-secondary);
+}
+
+#month-day {
+  color: var(--color-highlight-secondary);
+}
+
+#hours {
+  color: var(--color-highlight-secondary);
+}
+
 #window-quote {
   color: var(--color-additional);
 }
 
+#quote-text {
+  color: var(--color-highlight-additional);
+}
+
 #window-content {
-  width: 800px;
+  width: 900px;
   height: 500px;
   display: flex;
 }
@@ -68,21 +88,23 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   width: 40%;
-  border-right: var(--color-highlight) 7px ridge;
+  border-right: var(--color-highlight-primary) 7px ridge;
 }
 
 /* TERMINAL */
 #terminal {
   width: 100%;
-  padding: 1em;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  overflow-x: clip;
+  padding: 17px;
+  padding-right: 13px;
 }
 
 #terminal::-webkit-scrollbar {
   background-color: transparent;
-  width: 20px;
+  width: 4px;
 }
 
 #terminal::-webkit-scrollbar-button {
@@ -92,39 +114,53 @@ body {
 
 #terminal::-webkit-scrollbar-thumb {
   background-color: var(--color-additional);
-  border: 8px var(--color-primary) solid;
 }
 
 /*  output */
+.terminal-output {
+  margin: 6px 0;
+}
+
 .output-text {
   color: var(--color-additional);
 }
 
 .output-bookmarks {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   list-style: none;
+  row-gap: 16.2806666667px; /* LOL */
 }
 
 .bookmarks-category {
-  padding: 1em;
+  flex-basis: 23%;
+  max-width: 23%;
+  display: flex;
+  flex-direction: column;
 }
 
 .category-title {
-  color: var(--color-highlight);
-  margin-bottom: 0.5em;
+  width: 100%;
+  color: var(--color-highlight-primary);
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .category-links {
   list-style: none;
   overflow-y: scroll;
-  max-height: 9em;
-  padding-right: 1em;
+  overflow-x: clip;
+  height: 152px;
+  width: 100%;
+  border-bottom: 4px var(--color-highlight-primary) solid;
+  border-top: 4px var(--color-highlight-primary) solid;
+  padding: 5px 4px 5px 0;
 }
 
 .category-links::-webkit-scrollbar {
   background-color: transparent;
-  width: 8px;
+  width: 4px;
 }
 
 .category-links::-webkit-scrollbar-button {
@@ -133,12 +169,27 @@ body {
 }
 
 .category-links::-webkit-scrollbar-thumb {
-  background-color: var(--color-highlight);
-  border: 2px var(--color-primary) solid;
+  background-color: var(--color-highlight-primary);
 }
 
 .links-item {
-  margin-bottom: 0.5em;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.links-item::after {
+  content: "<";
+  color: var(--color-highlight-additional);
+  opacity: 0;
+}
+
+.links-item:hover .item-link {
+  color: var(--color-highlight-additional);
+}
+
+.links-item:hover::after {
+  opacity: 1;
 }
 
 .links-item:hover .item-link {
@@ -154,7 +205,7 @@ body {
 /* prompt */
 .prompt {
   display: flex;
-  margin: 0.8em 0;
+  margin: 6px 0;
 }
 
 .prompt-title {
@@ -166,7 +217,7 @@ body {
 
 .prompt-cursor {
   margin: 0 0.7em;
-  color: var(--color-highlight);
+  color: var(--color-highlight-primary);
   display: flex;
   align-items: center;
   justify-content: center;
