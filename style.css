@@ -1,0 +1,210 @@
+/* GENERAL STYLES AND VARIABLES */
+:root {
+  --color-primary: #181825;
+  --color-secondary: #1e1e2e;
+  --color-additional: #c8d6f4;
+  --color-highlight: #cb99c3;
+  --color-error: #ff625e;
+  --color-warning: #fbc02d;
+  --color-success: #88e3a1;
+
+  --font-family: "Press Start 2P", cursive;
+  --font-size: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./assets/backgrounds/village.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* WINDOW */
+#window {
+  background-color: var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  border: var(--color-highlight) 7px ridge;
+  display: flex;
+  flex-direction: column;
+}
+
+#window-title {
+  padding: 1em;
+  border-bottom: var(--color-highlight) 7px ridge;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-secondary);
+}
+
+#window-clock {
+  color: var(--color-additional);
+}
+
+#window-quote {
+  color: var(--color-additional);
+}
+
+#window-content {
+  width: 800px;
+  height: 500px;
+  display: flex;
+}
+
+#window-gif {
+  background-image: url("assets/gifs/clouds.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40%;
+  border-right: var(--color-highlight) 7px ridge;
+}
+
+/* TERMINAL */
+#terminal {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+#terminal::-webkit-scrollbar {
+  background-color: transparent;
+  width: 20px;
+}
+
+#terminal::-webkit-scrollbar-button {
+  background-color: transparent;
+  display: none;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background-color: var(--color-additional);
+  border: 8px var(--color-primary) solid;
+}
+
+/*  output */
+.output-text {
+  color: var(--color-additional);
+}
+
+.output-bookmarks {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.bookmarks-category {
+  padding: 1em;
+}
+
+.category-title {
+  color: var(--color-highlight);
+  margin-bottom: 0.5em;
+}
+
+.category-links {
+  list-style: none;
+  overflow-y: scroll;
+  max-height: 9em;
+  padding-right: 1em;
+}
+
+.category-links::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+}
+
+.category-links::-webkit-scrollbar-button {
+  background-color: transparent;
+  display: none;
+}
+
+.category-links::-webkit-scrollbar-thumb {
+  background-color: var(--color-highlight);
+  border: 2px var(--color-primary) solid;
+}
+
+.links-item {
+  margin-bottom: 0.5em;
+}
+
+.links-item:hover .item-link {
+  text-decoration: underline;
+}
+
+.item-link {
+  color: var(--color-additional);
+  text-decoration: none;
+  display: block;
+}
+
+/* prompt */
+.prompt {
+  display: flex;
+  margin: 0.8em 0;
+}
+
+.prompt-title {
+  color: var(--color-success);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prompt-cursor {
+  margin: 0 0.7em;
+  color: var(--color-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prompt-text {
+  color: var(--color-additional);
+}
+
+#prompt-input {
+  width: 100%;
+  color: var(--color-additional);
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+/* SCANLINES ANIMATION */
+#scanlines {
+  background-image: url("assets/scanlines.png");
+  background-repeat: repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  animation: scanAnim 0.6s infinite;
+  animation-timing-function: linear;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+@keyframes scanAnim {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 0px 8px;
+  }
+}
