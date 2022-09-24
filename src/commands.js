@@ -207,7 +207,7 @@ function el(fullCommand) {
 
   if (flags[0] === "-u" && COMMANDS.el.flags.includes("-n")) {
     output = `[${linkToEdit.url}] changed to [${newValue}]`;
-    linkToEdit.url = newValue;
+    linkToEdit.url = formatUrl(newValue);
   }
 
   lsWriteBookmarks();
