@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "ms98";
+  src: url("assets/fonts/ms98.ttf");
+}
+
 /* GENERAL STYLES AND VARIABLES */
 :root {
   --color-primary: #181825;
@@ -11,8 +16,8 @@
   --color-warning: #fbc02d;
   --color-success: #88e3a1;
 
-  --font-family: "Press Start 2P", cursive;
-  --font-size: 12px;
+  --font-family: "ms98";
+  --font-size: 16px;
 }
 
 * {
@@ -21,6 +26,8 @@
   box-sizing: border-box;
   font-family: var(--font-family);
   font-size: var(--font-size);
+  letter-spacing: 2px;
+  line-height: 130%;
 }
 
 body {
@@ -33,7 +40,6 @@ body {
   background-image: url("./assets/backgrounds/village.png");
   background-repeat: no-repeat;
   background-size: cover;
-  line-height: 140%;
 }
 
 /* WINDOW */
@@ -54,27 +60,11 @@ body {
 }
 
 #window-clock {
-  color: var(--color-additional);
-}
-
-#week-day {
-  color: var(--color-highlight-secondary);
-}
-
-#month-day {
-  color: var(--color-highlight-secondary);
-}
-
-#hours {
-  color: var(--color-highlight-secondary);
+  color: var(--color-highlight-additional);
 }
 
 #window-quote {
-  color: var(--color-additional);
-}
-
-#quote-text {
-  color: var(--color-highlight-additional);
+  color: var(--color-highlight-secondary);
 }
 
 #window-content {
@@ -148,7 +138,7 @@ body {
 .category-title {
   width: 100%;
   color: var(--color-highlight-primary);
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   text-align: center;
 }
 
@@ -160,7 +150,7 @@ body {
   width: 100%;
   border-bottom: 4px var(--color-highlight-primary) solid;
   border-top: 4px var(--color-highlight-primary) solid;
-  padding: 5px 4px 5px 0;
+  padding: 3px 4px 3px 0;
 }
 
 .category-links::-webkit-scrollbar {
@@ -178,7 +168,7 @@ body {
 }
 
 .links-item {
-  padding: 5px 0;
+  padding: 3px 0;
   display: flex;
   flex-direction: row;
 }
@@ -210,22 +200,23 @@ body {
 /* prompt */
 .prompt {
   display: flex;
+  align-items: center;
   margin: 6px 0;
 }
 
 .prompt-title {
-  color: var(--color-success);
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
+.prompt-dir {
+  color: var(--color-success);
+  height: 14px;
+}
+
 .prompt-cursor {
-  margin: 0 0.7em;
+  margin: 0 0.6em 0 0.3em;
   color: var(--color-highlight-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .prompt-text {
