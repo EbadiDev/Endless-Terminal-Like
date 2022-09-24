@@ -2,7 +2,7 @@
 function cl(fullCommand) {
   const { attributes } = fullCommand;
 
-  if (attributes.length < 3) return COMMANDS.cl.help;
+  if (attributes.length < 3 || attributes.length > 3) return COMMANDS.cl.help;
 
   const category = attributes[0];
   const name = attributes[1];
@@ -31,7 +31,7 @@ function cl(fullCommand) {
 
   lsWriteBookmarks();
 
-  return [`[${name}] successfully added to [${category}] \\^o^/`, `url = ${url}`];
+  return [`[${name}] added to [${category}] \\^o^/`, `url = ${url}`];
 }
 
 // Output list of bookmarks or bookmarks category
@@ -39,6 +39,7 @@ function bm(fullCommand) {
   const { attributes } = fullCommand;
 
   if (attributes.length > 1) return COMMANDS.bm.help;
+  if (!bookmarks.length) return "you have no bookmarks ¯\\_(ツ)_/¯";
 
   return attributes.length ? bookmarks.filter((item) => item.category === attributes[0]) : bookmarks;
 }
@@ -65,7 +66,7 @@ function sq(fullCommand) {
   const { attributes } = fullCommand;
   let newQuote = attributes[0];
 
-  if (attributes.length > 1 || !newQuote) return COMMANDS.sq.help;
+  if (attributes.length > 1 || !newQuote || attributes.length > 1) return COMMANDS.sq.help;
 
   setQuote(newQuote.replaceAll('"', ""));
   lsWriteQuote();
@@ -153,7 +154,7 @@ function rc(fullCommand) {
   return [
     `[${target}] deleted`,
     `links were: <pre>${links
-      .map((link) => `   > ${link.name}<br>     url = ${link.url}<br><br>`)
+      .map((link) => `   > ${link.name}<br>     url = ${link.url}<br>`)
       .join("")
       .slice(0, -4)}</pre>`,
   ];
@@ -200,16 +201,16 @@ function el(fullCommand) {
   const linkToEdit = category.links.find((link) => link.name === name);
 
   if (flags[0] === "-n" && COMMANDS.el.flags.includes("-n")) {
-    output = `${linkToEdit.name} changed to ${newValue}`;
+    output = `[${linkToEdit.name}] changed to [${newValue}]`;
     linkToEdit.name = newValue;
   }
 
   if (flags[0] === "-u" && COMMANDS.el.flags.includes("-n")) {
-    output = `${linkToEdit.url} changed to ${newValue}`;
+    output = `[${linkToEdit.url}] changed to [${newValue}]`;
     linkToEdit.url = newValue;
   }
 
   lsWriteBookmarks();
 
-  return [`[${name}] value to change ${flagsMap[flags[0]]}`, output];
+  return [`[${name}] [${flagsMap[flags[0]]}] will be changed`, output];
 }

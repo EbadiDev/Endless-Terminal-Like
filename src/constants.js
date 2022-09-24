@@ -77,25 +77,22 @@ const helpGeneral = [
   `All commands go like:
   <pre>
 
-    * first letter = fs *
-    > fs of first word + fs of second word
+    > first letter of first word + first letter of second word
     > if there is only one word => only one letter
     > use quotes when you need combine 
-      words to one string
-  </pre>`,
+      words to one string</pre>`,
 
   `Examples:
   <pre>
 
     > [c]reate [l]ink:
-      cl - usage: ${helpText.CREATE_LINK.usage}
+       cl - usage: ${helpText.CREATE_LINK.usage}
 
     > [h]elp:
-      h - usage: ${helpText.HELP.usage}
+       h - usage: ${helpText.HELP.usage}
 
     > [s]et [q]uote:
-      sq - usage: ${helpText.SET_QUOTE.usage}
-  </pre>`,
+       sq - usage: ${helpText.SET_QUOTE.usage}</pre>`,
 
   `Enter 'h -cl' for command list`,
 ];

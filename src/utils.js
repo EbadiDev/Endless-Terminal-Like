@@ -33,9 +33,7 @@ function writePrompt() {
 
   prompt.classList.add("prompt");
   prompt.innerHTML = `
-    <p class="prompt-title">~${
-      (position.length && "/", position.join("/"))
-    }<span class="prompt-cursor">${promptSymbol}</span></p>
+    <div class="prompt-title"><span class="prompt-dir">~</span><span class="prompt-cursor">${promptSymbol}</span></div>
     <input id="prompt-input" type="text"/>
   `;
 

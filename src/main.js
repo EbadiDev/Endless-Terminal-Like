@@ -69,7 +69,8 @@ const COMMANDS = {
   setQuote();
 
   // Create initial prompt
-  outputText("Welcome to terminal, human! ^_^");
+  outputText(greetingsText);
+  bookmarks.length && outputBookmarks(bookmarks);
   writePrompt();
   focusPrompt();
 
@@ -87,14 +88,12 @@ function handleKeyPresses(event) {
 
 function runCommand(input) {
   fullCommand = parseFullCommand(input);
+  const commandToExecute = COMMANDS[fullCommand.command];
 
-  if (COMMANDS[fullCommand.command]) {
-    COMMANDS[fullCommand.command].func(fullCommand);
-  }
+  commandToExecute && commandToExecute.func(fullCommand);
+  !commandToExecute && outputText(["no such command ＞﹏＜", 'try "h" or "h -cl"']);
 
-  if (fullCommand.command !== "cc") {
-    replacePrompt();
-  }
+  fullCommand.command !== "cc" && replacePrompt();
 
   focusPrompt();
 }
