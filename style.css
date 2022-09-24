@@ -150,7 +150,7 @@ body {
   width: 100%;
   border-bottom: 4px var(--color-highlight-primary) solid;
   border-top: 4px var(--color-highlight-primary) solid;
-  padding: 3px 4px 3px 0;
+  padding: 3px 0;
 }
 
 .category-links::-webkit-scrollbar {
@@ -168,15 +168,16 @@ body {
 }
 
 .links-item {
-  padding: 3px 0;
+  height: 20%;
   display: flex;
-  flex-direction: row;
+  align-items: center;
 }
 
 .links-item::after {
   content: "<";
   color: var(--color-highlight-additional);
   opacity: 0;
+  margin-left: 3px;
 }
 
 .links-item:hover .item-link {
